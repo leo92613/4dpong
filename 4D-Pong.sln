@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2015
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "4D-Pong.CSharp.Plugins", "4D-Pong.CSharp.Plugins.csproj", "{04A34B83-15BB-A770-8173-A8AAE12B4347}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "4D-Pong.CSharp", "4D-Pong.CSharp.csproj", "{79AE6BAF-CDB6-CD7E-4B87-2C591FFC428C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "4D-Pong.CSharp.Editor", "4D-Pong.CSharp.Editor.csproj", "{B6032F32-F967-E336-8BB2-D26DCC6DAEA4}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{04A34B83-15BB-A770-8173-A8AAE12B4347}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{04A34B83-15BB-A770-8173-A8AAE12B4347}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{04A34B83-15BB-A770-8173-A8AAE12B4347}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{04A34B83-15BB-A770-8173-A8AAE12B4347}.Release|Any CPU.Build.0 = Release|Any CPU
+		{79AE6BAF-CDB6-CD7E-4B87-2C591FFC428C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{79AE6BAF-CDB6-CD7E-4B87-2C591FFC428C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{79AE6BAF-CDB6-CD7E-4B87-2C591FFC428C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{79AE6BAF-CDB6-CD7E-4B87-2C591FFC428C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B6032F32-F967-E336-8BB2-D26DCC6DAEA4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B6032F32-F967-E336-8BB2-D26DCC6DAEA4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B6032F32-F967-E336-8BB2-D26DCC6DAEA4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B6032F32-F967-E336-8BB2-D26DCC6DAEA4}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
