@@ -5,7 +5,7 @@ using System;
 namespace Holojam.IO {
     [RequireComponent(typeof(MeshFilter))]
     [RequireComponent(typeof(MeshRenderer))]
-    public class pong : ViveGlobalReceiver, IGlobalTriggerPressDownHandler{
+    public class pong : GlobalReceiver, IGlobalTriggerPressDownHandler{
         [SerializeField]
         private Vector4 speed;
         private Vector4 pos = new Vector4();
@@ -257,8 +257,8 @@ namespace Holojam.IO {
             }
         }
 
-        public void OnGlobalTriggerPressDown(ViveEventData eventData) {
-            controllerindex = (int)eventData.controller.index;
+        public void OnGlobalTriggerPressDown(ViveControllerModule.EventData eventData) {
+            controllerindex = (int)eventData.steamVRTrackedObject.index;
             if (isDead) {
                 StartCoroutine(pulse(controllerindex));
                 initGame();
