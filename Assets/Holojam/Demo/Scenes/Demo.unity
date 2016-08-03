@@ -262,6 +262,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   trackingTag: 0
+  smooth: 1
   handle: Blue
   motif: {r: 0, g: 1, b: 1, a: 1}
   mask: {fileID: 782223718}
@@ -669,6 +670,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   trackingTag: 24
+  smooth: 1
 --- !u!114 &482184428
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -871,7 +873,7 @@ Prefab:
     - target: {fileID: 11460270, guid: 4d7489321ae6b4a5ba5cac29df5f2f6c, type: 2}
       propertyPath: actor
       value: 
-      objectReference: {fileID: 1176129303}
+      objectReference: {fileID: 319824270}
     - target: {fileID: 11460270, guid: 4d7489321ae6b4a5ba5cac29df5f2f6c, type: 2}
       propertyPath: view
       value: 
@@ -1431,11 +1433,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11402444, guid: f59fb353b039e4ce48b574f04d9bd04a, type: 2}
       propertyPath: trackingTag
-      value: 19
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 11457976, guid: f59fb353b039e4ce48b574f04d9bd04a, type: 2}
       propertyPath: label
-      value: VR3_lefthand
+      value: VR1_righthand
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f59fb353b039e4ce48b574f04d9bd04a, type: 2}
@@ -1937,7 +1939,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1031375151
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2023,6 +2025,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   trackingTag: 2
+  smooth: 1
   handle: Red
   motif: {r: 1, g: 0, b: 0, a: 1}
   mask: {fileID: 408168082}
@@ -2070,6 +2073,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   trackingTag: 23
+  smooth: 1
 --- !u!4 &1177200647
 Transform:
   m_ObjectHideFlags: 0
@@ -2377,11 +2381,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11402444, guid: f59fb353b039e4ce48b574f04d9bd04a, type: 2}
       propertyPath: trackingTag
-      value: 20
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 11457976, guid: f59fb353b039e4ce48b574f04d9bd04a, type: 2}
       propertyPath: label
-      value: VR3_righthand
+      value: VR2_lefthand
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f59fb353b039e4ce48b574f04d9bd04a, type: 2}
@@ -2584,6 +2588,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   trackingTag: 3
+  smooth: 1
   handle: Yellow
   motif: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
   mask: {fileID: 846457367}
@@ -3026,6 +3031,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   trackingTag: 8
+  smooth: 1
 --- !u!23 &1707563173
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -3187,6 +3193,7 @@ MonoBehaviour:
   receivedWarning: 48
   sentPPS: 0
   receivedPPS: 
+  threadData: []
 --- !u!1001 &1839278464
 Prefab:
   m_ObjectHideFlags: 0
@@ -3402,6 +3409,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   trackingTag: 1
+  smooth: 1
   handle: Green
   motif: {r: 0, g: 1, b: 0, a: 1}
   mask: {fileID: 27169721}

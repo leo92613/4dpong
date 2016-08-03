@@ -6,7 +6,6 @@ namespace Holojam.IO {
     [RequireComponent(typeof(MeshFilter))]
     [RequireComponent(typeof(MeshRenderer))]
     public class pong : GlobalReceiver, IGlobalTriggerPressDownHandler{
-        [SerializeField]
         private Vector4 speed;
         private Vector4 pos = new Vector4();
         private Color32 defaultcolor,towardscolor,futhercolor,hitcolor;
@@ -19,6 +18,7 @@ namespace Holojam.IO {
         private float userperspective;
 
         public int controllerindex;
+        public GameObject Sync1, Sync2;
         #region Face
         int[] faces = new int[] {4,0,8,12,
             6,2,10,14,
@@ -134,8 +134,6 @@ namespace Holojam.IO {
             }
             else
                 pos.x = _pos.x;
-
-
             if (_pos.y > Y) {
                 pos.y = 2 * Y - _pos.y;
                 changespeed(new Vector4(0, 2 * (-speed.y), 0, 0));
@@ -146,8 +144,6 @@ namespace Holojam.IO {
             }
             else
                 pos.y = _pos.y;
-
-
             if (_pos.z > Z) {
                 pos.z = 2 * Z - _pos.z;
                 changespeed(new Vector4(0, 0, 2 * (-speed.z), 0));
@@ -163,18 +159,18 @@ namespace Holojam.IO {
         void checkboundary(Vector4 _pos) {
             // This part is for future multiplayer stuff
             if (_pos.w <= -(0.8*W) && speed.w<0) {
-                //canHit = true;
+                Sync2.GetComponent<Transform>().position = new Vector3(Sync2.GetComponent<Transform>().position.x, 1, Sync2.GetComponent<Transform>().position.z);
                 //Color32 _color = new Color32(0, 0, 179, 19);
                 //this.GetComponent<Renderer>().material.SetColor("_TintColor", _color);
             }
             else if (_pos.w >= (0.8 * W) && speed.w>0) {
-                canHit = true;
+                Sync2.GetComponent<Transform>().position = new Vector3(Sync2.GetComponent<Transform>().position.x, -1, Sync2.GetComponent<Transform>().position.z);
                 Color32 _color = new Color32(85, 128, 0,19);
                 this.GetComponent<Renderer>().material.SetColor("_TintColor", hitcolor);
             }
-           else { 
-                canHit = false;
-                if(speed.w < 0)
+           else {
+                Sync2.GetComponent<Transform>().position = new Vector3(Sync2.GetComponent<Transform>().position.x, 0, Sync2.GetComponent<Transform>().position.z);
+                if (speed.w < 0)
                     this.GetComponent<Renderer>().material.SetColor("_TintColor", futhercolor);
                 else
                     this.GetComponent<Renderer>().material.SetColor("_TintColor", defaultcolor);
@@ -187,15 +183,11 @@ namespace Holojam.IO {
                 if (_pos.w < -W) {
                     pos.w = 2 * (-W) - _pos.w;
                     changespeed(new Vector4(0, 0, 0, 2 * (-speed.w)));
-                    //isout = true;
                 }
             if (_pos.w >= -W && _pos.w <= W) {
-                //canHit = false;
                 checkbounce(_pos);
                 pos.w = _pos.w;
             }
-                //if (isout)
-                //    StartCoroutine(pulse());
 
             }
 
@@ -213,6 +205,14 @@ namespace Holojam.IO {
             Debug.Log(_controllerindex);
             yield return null;
             }
+
+        IEnumerator pause()
+        {
+            Sync2.GetComponent<Transform>().position = new Vector3(Sync2.GetComponent<Transform>().position.x, Sync2.GetComponent<Transform>().position.y, 1);
+            yield return new WaitForSeconds(2);
+            Sync2.GetComponent<Transform>().position = new Vector3(Sync2.GetComponent<Transform>().position.x, Sync2.GetComponent<Transform>().position.y, -1);
+
+        }
 
         void hit(Vector3 _speed) {
             //float speedscale = Mathf.Sqrt(speed.x *speed.x + speed.y*speed.y + speed.z*speed.z) / _speed.magnitude;
@@ -235,7 +235,9 @@ namespace Holojam.IO {
             hitcolor = new Color32(85, 128, 0, 19);
             isDead = true;
             canHit = false;
-            
+            Sync1.GetComponent<Transform>().position = new Vector3();
+            Sync2.GetComponent<Transform>().position = new Vector3();
+
         }
 
         // Update is called once per frame
@@ -245,14 +247,23 @@ namespace Holojam.IO {
                 tmp = pos + speed * Time.deltaTime;
                 checkboundary(tmp);
                 move(pos);
+                Sync1.GetComponent<Transform>().position = new Vector3(pos.x, pos.y, pos.z);
+                Sync2.GetComponent<Transform>().position = new Vector3(pos.w, Sync2.GetComponent<Transform>().position.y, Sync2.GetComponent<Transform>().position.z);
                 setupmesh(mesh);
             }
         }
         void OnTriggerEnter(Collider other) {
-            if (canHit) {
+            if (Sync2.GetComponent<Transform>().position.x < 0) {
                 if (other.gameObject.tag == "Player") {                   
                     StartCoroutine(pulse(controllerindex));
                     hit(other.GetComponent<ShowVelocity>().velocity);
+                }
+            }
+            if (Sync2.GetComponent<Transform>().position.x > 0)
+            {
+                if (other.gameObject.tag == "GameController")
+                {
+                    StartCoroutine(pause());
                 }
             }
         }
