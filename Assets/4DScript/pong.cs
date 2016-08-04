@@ -7,6 +7,7 @@ namespace Holojam.IO {
     [RequireComponent(typeof(MeshRenderer))]
     public class pong : GlobalReceiver, IGlobalTriggerPressDownHandler{
         private Vector4 speed;
+        [SerializeField]
         private Vector4 pos = new Vector4();
         private Color32 defaultcolor,towardscolor,futhercolor,hitcolor;
         private float scalefactor = 0.05f;
@@ -171,10 +172,16 @@ namespace Holojam.IO {
            else {
                 Sync2.GetComponent<Transform>().position = new Vector3(Sync2.GetComponent<Transform>().position.x, 0, Sync2.GetComponent<Transform>().position.z);
                 if (speed.w < 0)
+                {
                     this.GetComponent<Renderer>().material.SetColor("_TintColor", futhercolor);
+                    Sync2.GetComponent<Transform>().position = new Vector3(Sync2.GetComponent<Transform>().position.x, Sync2.GetComponent<Transform>().position.y, -1);
+                }
                 else
+                {
                     this.GetComponent<Renderer>().material.SetColor("_TintColor", defaultcolor);
-            }
+                    Sync2.GetComponent<Transform>().position = new Vector3(Sync2.GetComponent<Transform>().position.x, Sync2.GetComponent<Transform>().position.y, 1);
+                }
+                }
                 if (_pos.w > W) {
                     pos.w = 2 * W - _pos.w;
                     changespeed(new Vector4(0, 0, 0, 2 * (-speed.w)));
@@ -253,13 +260,13 @@ namespace Holojam.IO {
             }
         }
         void OnTriggerEnter(Collider other) {
-            if (Sync2.GetComponent<Transform>().position.x < 0) {
+            if (Sync2.GetComponent<Transform>().position.y < 0) {
                 if (other.gameObject.tag == "Player") {                   
                     StartCoroutine(pulse(controllerindex));
                     hit(other.GetComponent<ShowVelocity>().velocity);
                 }
             }
-            if (Sync2.GetComponent<Transform>().position.x > 0)
+            if (Sync2.GetComponent<Transform>().position.y > 0)
             {
                 if (other.gameObject.tag == "GameController")
                 {

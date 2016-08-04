@@ -80,6 +80,7 @@
   <ItemGroup>
     <Compile Include="Assets\4DScript\GameCube.cs" />
     <Compile Include="Assets\4DScript\Network\NetworkManager.cs" />
+    <Compile Include="Assets\4DScript\PongClient.cs" />
     <Compile Include="Assets\4DScript\pong.cs" />
     <Compile Include="Assets\Holojam\Demo\Scripts\ActorController.cs" />
     <Compile Include="Assets\Holojam\Demo\Scripts\DebugSphere.cs" />
